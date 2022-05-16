@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PersonnageService } from './services/personnage.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ted-marvel';
+  public constructor(pesonnageService:PersonnageService){
+    pesonnageService.getHeroes().subscribe((data) => console.log(data.data.results))
+  }
 }

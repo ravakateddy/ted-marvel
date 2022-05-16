@@ -1,0 +1,19 @@
+.grid{
+    padding: 2em;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    column-gap: 2em;
+    row-gap: 2em;
+    grid-template-rows: repeat(auto-fill, 500px);
+
+}
+.mat-card, img{
+    height: 85%;
+    cursor: pointer;
+}
+
+.grid-item{
+    display: block;
+    min-width: 500px;
+    height: 100%;
+}

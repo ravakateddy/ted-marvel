@@ -1,1 +1,12 @@
-<p>list-personnages works!</p>
+<div class="grid">
+    <div *ngFor="let perso of personnages" >
+        <mat-card class="grid-itemd">
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title><a [routerLink]="['/detail/'+perso.id]">{{perso.name}}</a></mat-card-title>
+            </mat-card-header>
+            <img mat-card-image src="{{perso.thumbnail.path+'.'+perso.thumbnail.extension}}">
+          </mat-card>
+    </div>
+    
+</div>

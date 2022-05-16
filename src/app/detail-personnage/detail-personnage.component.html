@@ -1,1 +1,19 @@
-<p>detail-personnage works!</p>
+<mat-card style="margin: 2em;">
+    <mat-card-content>
+        <h1>{{(personnage | async)?.name}}</h1>
+      <img class="profile" src="{{(personnage | async)?.thumbnail.path+'.'+(personnage | async)?.thumbnail.extension}}">
+      <h1>Description</h1>
+      <p>{{(personnage | async)?.description}} </p>
+
+      <h1>Nombre de comics</h1>
+      <p>{{(comics | async)?.length}}</p>
+
+      <h1>Comics</h1>
+      <ul>
+          
+      </ul>
+      <div *ngFor="let comic of comics|async">
+            {{comic.name}}
+      </div>
+    </mat-card-content>
+  </mat-card>

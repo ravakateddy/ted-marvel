@@ -1,32 +1,36 @@
-<mat-card style="margin: 2em;">
-  <mat-card-content>
-    <div>
-      <img src="{{(personnage | async)?.thumbnail.path+'.'+(personnage | async)?.thumbnail.extension}}">
-    </div>
-    <div class="desc">
-      <h1>{{(personnage | async)?.name}}</h1>
-
-      <h2>Description</h2>
-      <p>{{(personnage | async)?.description}} </p>
-      <p *ngIf="(personnage | async)?.description==''">Pas de description</p>
-      <h2>Nombre de comics</h2>
-      <p>{{(comics | async)?.length}}</p>
-
-      <h2>Comics</h2>
-      <ul>
-
-      </ul>
-      <p *ngIf="(comics | async)?.length==0">Pas de comics</p>
-      <div class="comics">
-        <div *ngFor="let comic of comics|async">
-          
-          
-          <img class="comic" src="{{comic.thumbnail.path+'.'+comic.thumbnail.extension}}" alt="">
-          <h3>{{comic.title}}</h3>
-        </div>
+<div *ngIf="isLoading;then loading else content"></div>
+<ng-template #loading>Loading</ng-template>
+<ng-template #content>
+  <mat-card style="margin: 2em;">
+    <mat-card-content>
+      <div>
+        <img src="{{(personnage | async)?.thumbnail.path+'.'+(personnage | async)?.thumbnail.extension}}">
       </div>
-      
-    </div>
-
-  </mat-card-content>
-</mat-card>
+      <div class="desc">
+        <h1>{{(personnage | async)?.name}}</h1>
+  
+        <h2>Description</h2>
+        <p>{{(personnage | async)?.description}} </p>
+        <p *ngIf="(personnage | async)?.description==''">Pas de description</p>
+        <h2>Nombre de comics</h2>
+        <p>{{(comics | async)?.length}}</p>
+  
+        <h2>Comics</h2>
+        <ul>
+  
+        </ul>
+        <p *ngIf="(comics | async)?.length==0">Pas de comics</p>
+        <div class="comics">
+          <div *ngFor="let comic of comics|async">
+            
+            
+            <img class="comic" src="{{comic.thumbnail.path+'.'+comic.thumbnail.extension}}" alt="">
+            <h3>{{comic.title}}</h3>
+          </div>
+        </div>
+        
+      </div>
+  
+    </mat-card-content>
+  </mat-card>
+</ng-template>

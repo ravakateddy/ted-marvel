@@ -11,7 +11,7 @@
 }
 
 h1{
-    font-size: 3.5vw;
+    font-size: 2.5em;
     margin-bottom: 1.5em;
 }
 
@@ -42,7 +42,7 @@ h3{
 .comics{
     display: flex;
     column-gap: 50px;
-    overflow-x: scroll;
+    overflow-x: auto;
 }
 
 @media (max-width: 1024px) { 

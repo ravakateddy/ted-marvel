@@ -10,7 +10,7 @@ import { PersonnageService } from '../services/personnage.service';
   styleUrls: ['./detail-personnage.component.css']
 })
 export class DetailPersonnageComponent implements OnInit {
-
+  isLoading=true;
   personnage:ReplaySubject<any> = new ReplaySubject();
   comics: ReplaySubject<any[]> = new ReplaySubject();
   constructor(private route: ActivatedRoute, private personnageService:PersonnageService, private comicsService:ComicsService) { }
@@ -21,6 +21,7 @@ export class DetailPersonnageComponent implements OnInit {
         this.personnage.next(hero.data.results[0]);
         this.comicsService.getComics(hero.data.results[0].id as number).subscribe(comics=>{
           this.comics.next(comics.data.results.splice(0, 3))
+          this.isLoading = false
         })
       })
     })

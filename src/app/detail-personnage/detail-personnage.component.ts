@@ -20,7 +20,7 @@ export class DetailPersonnageComponent implements OnInit {
       this.personnageService.getHero(param.id as number).subscribe(hero=>{
         this.personnage.next(hero.data.results[0]);
         this.comicsService.getComics(hero.data.results[0].id as number).subscribe(comics=>{
-          this.comics.next(comics.data.results.splice(0, 3))
+          this.comics.next(comics.data.results)
           this.isLoading = false
         })
       })

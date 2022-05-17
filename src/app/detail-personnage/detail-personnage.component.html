@@ -1,5 +1,7 @@
 <div *ngIf="isLoading;then loading else content"></div>
-<ng-template #loading>Loading</ng-template>
+<ng-template #loading><div class="spinner">
+  <mat-spinner></mat-spinner>
+</div></ng-template>
 <ng-template #content>
   <mat-card style="margin: 2em;">
     <mat-card-content>
@@ -21,7 +23,7 @@
         </ul>
         <p *ngIf="(comics | async)?.length==0">Pas de comics</p>
         <div class="comics">
-          <div *ngFor="let comic of comics|async">
+          <div *ngFor="let comic of (comics|async)?.splice(0,3)">
             
             
             <img class="comic" src="{{comic.thumbnail.path+'.'+comic.thumbnail.extension}}" alt="">

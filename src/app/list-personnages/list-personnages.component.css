@@ -5,15 +5,62 @@
     column-gap: 2em;
     row-gap: 2em;
     grid-template-rows: repeat(auto-fill, 500px);
+    margin-left: 10em;
+    margin-right: 10em;
 
 }
-.mat-card, img{
-    height: 85%;
+.mat-card{
+    height: 90%;
     cursor: pointer;
+    overflow: hidden;
+    background-color: transparent;
 }
+img{
+    height: 90%;
+}
+a{
+    color: white;
+}
+
+.preview{
+    position: absolute;
+    top:0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    opacity: 0;
+}
+
+.preview .mat-icon{
+    font-size: 150px;
+    width: 150px;
+    height: 150px;
+}
+
+.mat-card:hover .preview {
+    transition: 3s;
+    opacity: 1;
+  }
+
+
 
 .grid-item{
     display: block;
     min-width: 500px;
-    height: 100%;
+    height: 90%;
 }
+
+/* Colorize-zoom Container */
+.mat-card img {
+    transition: transform .5s, filter 1.5s ease-in-out;
+    filter: grayscale(100%);
+  }
+  
+  /* The Transformation */
+  .mat-card:hover img {
+    filter: grayscale(0);
+    transform: scale(1.01);
+  }

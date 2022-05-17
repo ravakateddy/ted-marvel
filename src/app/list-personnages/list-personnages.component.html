@@ -1,11 +1,13 @@
 <div class="grid">
     <div *ngFor="let perso of personnages" >
         <mat-card class="grid-itemd">
-            <mat-card-header>
-              <div mat-card-avatar class="example-header-image"></div>
-              <mat-card-title><a [routerLink]="['/detail/'+perso.id]">{{perso.name}}</a></mat-card-title>
-            </mat-card-header>
+
             <img mat-card-image src="{{perso.thumbnail.path+'.'+perso.thumbnail.extension}}">
+            <a [routerLink]="['/detail/'+perso.id]">
+              <div class="preview"><mat-icon>visibility</mat-icon></div>
+            </a>
+            
+            <h1>{{perso.name}}</h1>
           </mat-card>
     </div>
     

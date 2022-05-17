@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, ReplaySubject } from 'rxjs';
+import { ComicsService } from '../services/comics.service';
 import { PersonnageService } from '../services/personnage.service';
 
 @Component({
@@ -12,13 +13,15 @@ export class DetailPersonnageComponent implements OnInit {
 
   personnage:ReplaySubject<any> = new ReplaySubject();
   comics: ReplaySubject<any[]> = new ReplaySubject();
-  constructor(private route: ActivatedRoute, private personnageService:PersonnageService) { }
+  constructor(private route: ActivatedRoute, private personnageService:PersonnageService, private comicsService:ComicsService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((param)=>{
       this.personnageService.getHero(param.id as number).subscribe(hero=>{
         this.personnage.next(hero.data.results[0]);
-        this.comics.next(hero.data.results[0].comics.items.splice(0, 3));
+        this.comicsService.getComics(hero.data.results[0].id as number).subscribe(comics=>{
+          this.comics.next(comics.data.results.splice(0, 3))
+        })
       })
     })
   }
